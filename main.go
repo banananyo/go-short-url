@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/eddywm/go-shortner/handler"
 	"github.com/eddywm/go-shortner/store"
 	"github.com/gin-gonic/gin"
@@ -11,7 +12,7 @@ func main() {
 	r := gin.Default()
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
-			"message": "Welcome to the URL Shortener API",
+			"create": "POST create-short-url",
 		})
 	})
 
