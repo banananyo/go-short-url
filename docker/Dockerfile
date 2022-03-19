@@ -9,6 +9,7 @@ COPY app/go.sum ./
 RUN go mod download
 
 COPY app ./
+COPY .env ./
 # COPY *.go ./
 # RUN mkdir handler
 # COPY handler/*.go ./handler
