@@ -9,6 +9,13 @@ services:
     volumes: 
       - cache:/data
 
+  shorturl:
+    image: docker-short-url
+    container_name: shorturl
+    restart: always
+    ports:
+      - '0.0.0.0:9808:9808'
+
   nginx:
     image: nginx:${NGINX_VERSION:-latest}
     container_name: nginx
@@ -21,6 +28,7 @@ services:
       - ./sites:/var/www/html
     depends_on:
       - cache
+      - shorturl
     restart: always
 
 volumes:

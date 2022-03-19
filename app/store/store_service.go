@@ -21,7 +21,7 @@ type StorageService struct {
 
 func InitializeStore() *StorageService {
 	redisClient := redis.NewClient(&redis.Options{
-		Addr:     "localhost:6379",
+		Addr:     "shortcache:6379",
 		Password: "Password",
 		DB:       0,
 	})
