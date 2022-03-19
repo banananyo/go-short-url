@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"strings"
 
 	"github.com/eddywm/go-shortner/handler"
 	"github.com/eddywm/go-shortner/store"
@@ -9,6 +11,12 @@ import (
 )
 
 func main() {
+
+	for _, e := range os.Environ() {
+		pair := strings.SplitN(e, "=", 2)
+		fmt.Printf("%s: %s\n", pair[0], pair[1])
+	}
+
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
 	r.GET("/", func(c *gin.Context) {
