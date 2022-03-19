@@ -3,6 +3,7 @@ package store
 import (
 	"context"
 	"fmt"
+	"os"
 	"time"
 
 	"github.com/go-redis/redis/v8"
@@ -22,7 +23,7 @@ type StorageService struct {
 func InitializeStore() *StorageService {
 	redisClient := redis.NewClient(&redis.Options{
 		Addr:     "shortcache:6379",
-		Password: "Password",
+		Password: os.Getenv("REDIS_PASSWORD"),
 		DB:       0,
 	})
 

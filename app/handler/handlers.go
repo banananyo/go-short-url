@@ -1,10 +1,11 @@
 package handler
 
 import (
+	"net/http"
+
 	"github.com/eddywm/go-shortner/shortener"
 	"github.com/eddywm/go-shortner/store"
 	"github.com/gin-gonic/gin"
-	"net/http"
 )
 
 type UrlCreationRequest struct {
@@ -22,7 +23,7 @@ func CreateShortUrl(c *gin.Context) {
 	shortUrl := shortener.GenerateShortLink(creationRequest.LongUrl, creationRequest.UserId)
 	store.SaveUrlMapping(shortUrl, creationRequest.LongUrl, creationRequest.UserId)
 
-	host := "http://localhost:9808/"
+	host := "https://l.tea2.one/"
 	c.JSON(200, gin.H{
 		"message":   "short url created successfully",
 		"short_url": host + shortUrl,
